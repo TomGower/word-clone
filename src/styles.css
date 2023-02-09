@@ -230,3 +230,52 @@ h1 {
     transform: translateY(0%);
   }
 }
+
+.keyboard-wrapper {
+  width: 100%;
+}
+
+.keyboard-row {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.letter {
+  width: max(24px, 8%);
+  /* width: 8%; */
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  margin: 2px;
+}
+
+.letter.correct {
+  background: var(--color-success);
+  border-color: var(--color-success);
+  color: white;
+}
+
+.letter.misplaced {
+  background: var(--color-warning);
+  border-color: var(--color-warning);
+  color: white;
+}
+
+.letter.incorrect {
+  background: var(--color-gray-300);
+  border-color: var(--color-gray-300);
+  color: white;
+}
+
+.letter.unguessed {
+  background-color: var(--color-gray-700);
+  border-color: var(--color-gray-500);
+  color: black;
+}
+
+.reset {
+  background: var(--color-gray-500);
+}
