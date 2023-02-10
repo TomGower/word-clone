@@ -2,7 +2,7 @@ import React from 'react';
 
 import { sample, range } from '../../utils';
 import { WORDS } from '../../data';
-import { checkGuess } from '../../game-helpers';
+// import { checkGuess } from '../../game-helpers';
 import GuessAnswer from '../GuessAnswer';
 import GuessResult from '../GuessResult';
 import GameOver from '../GameOver';
@@ -54,7 +54,8 @@ function Game() {
       }
     }
     setGuessColors(nextColors);
-    const didWin = checkGuess(guess, answer)?.filter(c => c.status === 'correct').length === 5;
+    // const didWin = checkGuess(guess, answer)?.filter(c => c.status === 'correct').length === 5;
+    const didWin = guess.toUpperCase() === answer; // this is way simpler than the above
     if (didWin) setIsGameWon(true);
   }
 
@@ -66,7 +67,14 @@ function Game() {
           })}
       </div>
       <GuessAnswer addGuess={addGuess} count={count} isGameOver={isGameWon || count === NUM_OF_GUESSES_ALLOWED} />
-      {isGameWon ? <GameOver count={count} gameStatus={'happy'} reset={resetGame} /> : (count === NUM_OF_GUESSES_ALLOWED ? <GameOver count={count} gameStatus="sad" answer={answer} reset={resetGame} /> : '')}
+      {isGameWon ?
+        <GameOver count={count} gameStatus={'happy'} reset={resetGame} /> :
+        (count === NUM_OF_GUESSES_ALLOWED ?
+          <GameOver count={count} gameStatus="sad" answer={answer} reset={resetGame} />
+          : ''
+        )
+      }
+      {/* with restructure of GameOver component and 3-level gameStatus prop (won, lost, running), Josh displays win and lose conditions separately with different components and conditionally renders them based on game status (won && WonBanner, lost && wonBanner) */}
       <Keyboard guessColors={guessColors} />
     </div>
   );

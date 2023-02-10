@@ -5,9 +5,9 @@ import DisplayCharacter from '../DisplayCharacter';
 function GuessResult({ guess, answer }) {
   let chars = checkGuess(guess, answer);
   if (!chars) {
-    chars = new Array(5).fill().map(c => ({ letter: '', status: '', id: Math.random() }))
+    chars = new Array(5).fill().map(c => ({ letter: '', status: '', id: Math.random() }));
   } else {
-    while (chars.length < 5) chars.push({ letter: '', status: '' })
+    while (chars.length < 5) chars.push({ letter: '', status: '' });
     chars = chars.map((c) => ({...c, id: Math.random() }));
   }
 
